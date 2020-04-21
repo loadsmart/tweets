@@ -61,7 +61,10 @@ try {
     pr: github.context.payload.pull_request,
   };
   const notification = buildNotification(args);
-  console.info("Notification args:", notification);
+  console.info(
+    "Notification args:",
+    JSON.stringify(notification, undefined, 2)
+  );
 
   (async () => {
     await webhook.send(notification);

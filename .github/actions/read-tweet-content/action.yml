@@ -1,0 +1,8 @@
+name: "Read tweet content"
+description: "Reads content of tweet from PR"
+outputs:
+  content:
+    description: The tweet itself
+runs:
+  using: "node12"
+  main: "index.js"

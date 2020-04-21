@@ -5,9 +5,9 @@ inputs:
     description: "Text for the notification"
     required: false
     default: "Hello, everyone! :wave:\n There's a new post for you to review. Would you help us out? :tada:"
+  tweet:
+    description: "The tweet content itself"
+    required: true
 runs:
   using: "node12"
   main: "index.js"
-branding:
-  icon: bell
-  color: blue
