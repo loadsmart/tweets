@@ -2,17 +2,17 @@ on: [push, pull_request]
 name: Twitter, together!
 jobs:
   preview:
-    name: Preview
+    name: Preview and notify
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
     steps:
       - uses: gr2m/twitter-together@v1.x
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Notify on Slack
-        uses: barbosa/github-action-new-tweet-to-review@v1
-        with:
-          message: This is a test message
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/notify-of-tweet-to-review
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   tweet:
     name: Tweet
     runs-on: ubuntu-latest
