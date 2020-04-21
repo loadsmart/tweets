@@ -49,28 +49,30 @@ const buildNotification = ({ text, pr }) => ({
   ],
 });
 
-try {
-  const text = core.getInput("text");
-  const url = process.env.SLACK_WEBHOOK_URL;
-  const webhook = new IncomingWebhook(url);
+async function run() {
+  try {
+    const text = core.getInput("text");
+    const url = process.env.SLACK_WEBHOOK_URL;
+    const webhook = new IncomingWebhook(url);
 
-  console.info("Sending notification to Slack...");
+    console.info("Sending notification to Slack...");
 
-  const args = {
-    text: text,
-    pr: github.context.payload.pull_request,
-  };
-  const notification = buildNotification(args);
-  console.info(
-    "Notification args:",
-    JSON.stringify(notification, undefined, 2)
-  );
+    const args = {
+      text: text,
+      pr: github.context.payload.pull_request,
+    };
+    const notification = buildNotification(args);
+    console.info(
+      "Notification args:",
+      JSON.stringify(notification, undefined, 2)
+    );
 
-  (async () => {
     await webhook.send(notification);
     console.info("Notification sent!");
-  })();
-} catch (error) {
-  console.info("Error sending notification:");
-  core.setFailed(error.message);
+  } catch (error) {
+    console.info("Error sending notification:");
+    core.setFailed(error.message);
+  }
 }
+
+run();
