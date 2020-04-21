@@ -3,7 +3,7 @@ const github = require("@actions/github");
 
 const { IncomingWebhook } = require("@slack/webhook");
 
-const buildNotification = ({ text, pr }) => ({
+const buildNotification = ({ text, tweet, pr }) => ({
   blocks: [
     {
       type: "section",
@@ -22,7 +22,7 @@ const buildNotification = ({ text, pr }) => ({
         },
         {
           type: "mrkdwn",
-          text: `*Date:* ${pr.created_at}`,
+          text: `*Date:* ${pr.created_at.split("T")[0]}`,
         },
       ],
     },
