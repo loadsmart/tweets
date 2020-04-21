@@ -10,7 +10,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v2
-      - uses: ././github/actions/read-tweet-content
+      - uses: ./.github/actions/read-tweet-content
         id: read-tweet-content
       - uses: ./.github/actions/notify-of-tweet-to-review
         with:
