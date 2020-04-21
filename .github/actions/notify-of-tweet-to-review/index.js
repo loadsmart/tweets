@@ -30,8 +30,7 @@ const buildNotification = ({ text, pr }) => ({
       type: "section",
       text: {
         type: "mrkdwn",
-        text:
-          "```We’ve been using @DangerSystems for almost 2ys at @LoadsmartUS. It started tiny and now more and more projects have it integrated. It’s not only improving our projects’ overall quality but also helping us building our culture. If you don’t know it yet, @_camila_maia_ made this 🚀```",
+        text: "```" + tweet + "```",
       },
     },
     {
@@ -52,6 +51,7 @@ const buildNotification = ({ text, pr }) => ({
 async function run() {
   try {
     const text = core.getInput("text");
+    const tweet = core.getInput("tweet");
     const url = process.env.SLACK_WEBHOOK_URL;
     const webhook = new IncomingWebhook(url);
 
@@ -59,6 +59,7 @@ async function run() {
 
     const args = {
       text: text,
+      tweet: tweet,
       pr: github.context.payload.pull_request,
     };
     const notification = buildNotification(args);
