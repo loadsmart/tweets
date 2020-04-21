@@ -1,8 +1,8 @@
 on: [push, pull_request]
 name: Twitter, together!
 jobs:
-  preview:
-    name: Preview
+  preview-and-notify:
+    name: Preview and Notify
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
     steps:
@@ -11,8 +11,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Notify on Slack
         uses: barbosa/github-action-new-tweet-to-review@v1
-        with:
-          message: This is a test message
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   tweet:
     name: Tweet
     runs-on: ubuntu-latest
