@@ -1,0 +1,25 @@
+{
+  "name": "github-action-new-tweet-to-review",
+  "version": "1.0.0",
+  "description": "Send Slack notification with draft tweet to be reviewed",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loadsmart/tweets.git"
+  },
+  "keywords": [],
+  "author": "Gustavo Barbosa <gustavocsb@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loadsmart/tweets/issues"
+  },
+  "homepage": "https://github.com/loadsmart/tweets#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.3",
+    "@actions/github": "^2.1.1",
+    "@slack/webhook": "^5.0.3"
+  }
+}
