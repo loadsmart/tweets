@@ -9,6 +9,10 @@ jobs:
       - uses: gr2m/twitter-together@v1.x
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Notify on Slack
+        uses: barbosa/github-action-new-tweet-to-review@v1
+        with:
+          message: This is a test message
   tweet:
     name: Tweet
     runs-on: ubuntu-latest
