@@ -1,0 +1,4 @@
+.DS_Store
+
+# do not uncomment the line below - GitHub Actions need the node_modules folder in its repo
+#node_modules
