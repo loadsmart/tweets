@@ -9,7 +9,7 @@ jobs:
       - uses: gr2m/twitter-together@v1.x
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: .github/actions/notify-of-tweet-to-review
+      - uses: ./.github/actions/notify-of-tweet-to-review
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   tweet:
