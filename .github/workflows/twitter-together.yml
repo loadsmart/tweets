@@ -9,8 +9,7 @@ jobs:
       - uses: gr2m/twitter-together@v1.x
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Notify on Slack
-        uses: barbosa/github-action-new-tweet-to-review@v1
+      - uses: barbosa/github-action-new-tweet-to-review@v1
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   tweet:
