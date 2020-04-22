@@ -50,8 +50,13 @@ const buildNotification = ({ text, tweet, pr }) => ({
 
 async function run() {
   try {
-    const text = core.getInput("text");
     const tweet = core.getInput("tweet");
+    if (tweet === "" || tweet === undefined || tweet === null) {
+      console.info("No tweets found in this PR. Skipping.");
+      return;
+    }
+
+    const text = core.getInput("text");
     const url = process.env.SLACK_WEBHOOK_URL;
     const webhook = new IncomingWebhook(url);
 
