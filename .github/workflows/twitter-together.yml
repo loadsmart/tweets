@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/read-tweet-content
         id: read-tweet-content
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: ./.github/actions/notify-of-tweet-to-review
         with:
           tweet: ${{ steps.read-tweet-content.outputs.content }}
