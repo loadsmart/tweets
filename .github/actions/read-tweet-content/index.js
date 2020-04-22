@@ -18,8 +18,21 @@ async function run() {
       }
     );
 
-    console.log(owner, repo, pull_number);
-    console.log("files", data);
+    const tweetFiles = data.filter((file) => file.filename.endsWith(".tweet"));
+
+    if (tweetFiles.length === 0) {
+      console.info("No tweets found. Skipping.");
+      core.setOutput("");
+      return;
+    }
+
+    if (tweetFiles.length > 1) {
+      core.setFailed("You're supposed to send only 1 tweet per pull request.");
+      return;
+    }
+
+    const content = await octokit.request(tweetFiles[0].raw_url);
+    console.log("content", content);
     core.setFailed("on purpose");
 
     // const content = "This is supposed to be the content of the tweet";
