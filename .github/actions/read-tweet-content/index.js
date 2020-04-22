@@ -8,8 +8,7 @@ async function run() {
     const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
     const pull_number = github.context.payload.pull_request.number;
 
-    octokit.request();
-    const { data } = await octokit.request(
+    const filesResponse = await octokit.request(
       "GET /repos/:owner/:repo/pulls/:pull_number/files",
       {
         owner,
@@ -18,7 +17,9 @@ async function run() {
       }
     );
 
-    const tweetFiles = data.filter((file) => file.filename.endsWith(".tweet"));
+    const tweetFiles = filesResponse.data.filter((file) =>
+      file.filename.endsWith(".tweet")
+    );
 
     if (tweetFiles.length === 0) {
       console.info("No tweets found. Skipping.");
@@ -31,13 +32,11 @@ async function run() {
       return;
     }
 
-    const content = await octokit.request(tweetFiles[0].raw_url);
-    console.log("content", content);
-    core.setFailed("on purpose");
+    const tweetFileResponse = await octokit.request(tweetFiles[0].raw_url);
+    const content = tweetFileResponse.data.replace("\\n", "");
 
-    // const content = "This is supposed to be the content of the tweet";
-
-    // core.setOutput("content", content);
+    console.info("Tweet found:", content);
+    core.setOutput("content", content);
   } catch (error) {
     core.setFailed(error.message);
   }
