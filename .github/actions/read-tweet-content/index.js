@@ -23,7 +23,7 @@ async function run() {
 
     if (tweetFiles.length === 0) {
       console.info("No tweets found. Skipping.");
-      core.setOutput("");
+      core.setOutput("content", "");
       return;
     }
 
