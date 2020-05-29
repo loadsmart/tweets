@@ -22,7 +22,7 @@ async function run() {
     );
 
     if (tweetFiles.length === 0) {
-      console.info("No tweets found. Skipping.");
+      console.info("No tweets found. Make sure your file has the '.tweet' extension. Skipping.");
       core.setOutput("content", "");
       return;
     }
