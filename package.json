@@ -20,7 +20,7 @@
   "dependencies": {
     "@actions/core": "^1.2.3",
     "@actions/github": "^2.1.1",
-    "@actions/http-client": "^1.0.8",
+    "@actions/http-client": "^1.0.11",
     "@octokit/action": "^2.3.2",
     "@slack/webhook": "^5.0.3"
   }
