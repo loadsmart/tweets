@@ -19,7 +19,7 @@
   "homepage": "https://github.com/loadsmart/tweets#readme",
   "dependencies": {
     "@actions/core": "^1.2.3",
-    "@actions/github": "^2.1.1",
+    "@actions/github": "^2.2.0",
     "@actions/http-client": "^1.0.8",
     "@octokit/action": "^2.3.2",
     "@slack/webhook": "^5.0.3"
