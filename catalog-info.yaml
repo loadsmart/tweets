@@ -5,6 +5,7 @@ metadata:
   description: Tweets from our Engineering team
   annotations:
     github.com/project-slug: loadsmart/tweets
+    opslevel.com/tier: tier_4
   tags:
     - twitter
 spec:
